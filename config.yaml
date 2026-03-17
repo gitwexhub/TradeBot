@@ -1,0 +1,29 @@
+# TradeBot config. Secrets go in .env, never here.
+
+kalshi:
+  base_url: "https://api.elections.kalshi.com/trade-api/v2"
+
+strategy:
+  lag_threshold_cents: 15     # Min gap between implied and market price to trade
+  trade_size_usd: 10.00
+  max_open_positions: 5
+
+data_feeds:
+  poll_interval_minutes: 5    # Normal BLS polling frequency
+  release_poll_seconds: 30    # Fast polling during 8–9am ET release window
+  # bls_api_key: ""           # Optional free key: data.bls.gov/registrationEngine/
+  #                           # Raises rate limit from 25 → 500 requests/day
+
+scheduler:
+  scan_interval_minutes: 5
+  sync_interval_minutes: 60
+  snapshot_interval_days: 3
+
+database:
+  path: "./data/tradebot.db"
+
+logging:
+  level: "INFO"
+  file: "./logs/tradebot.log"
+  max_bytes: 10485760
+  backup_count: 3

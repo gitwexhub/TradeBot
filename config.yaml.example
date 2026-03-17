@@ -1,0 +1,25 @@
+# Copy to config.yaml. Secrets go in .env, never here.
+
+kalshi:
+  base_url: "https://api.elections.kalshi.com/trade-api/v2"
+
+strategy:
+  resolution_window_hours: 48     # Scan markets closing within this many hours
+  yes_buy_threshold_cents: 70     # Buy YES if yes_ask >= this
+  no_buy_threshold_cents: 30      # Buy NO if yes_ask <= this
+  trade_size_usd: 10.00
+  max_open_positions: 5
+
+scheduler:
+  scan_interval_minutes: 30
+  sync_interval_minutes: 60
+  snapshot_interval_days: 3
+
+database:
+  path: "./data/tradebot.db"
+
+logging:
+  level: "INFO"
+  file: "./logs/tradebot.log"
+  max_bytes: 10485760
+  backup_count: 3
